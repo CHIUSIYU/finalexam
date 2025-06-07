@@ -11,14 +11,6 @@
       color: #e2decf;
       font-family: 'Noto Serif TC', serif;
       line-height: 1.8;
-      overflow: hidden;
-    }
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 10;
     }
     .container {
       max-width: 820px;
@@ -28,8 +20,6 @@
       border: 2px solid #3a2e19;
       border-radius: 8px;
       box-shadow: 0 0 20px rgba(80, 70, 50, 0.4);
-      position: relative;
-      z-index: 20;
     }
     h1 {
       font-family: 'IM Fell English SC', serif;
@@ -106,7 +96,6 @@
   </style>
 </head>
 <body>
-  <canvas id="firelight"></canvas>
   <div id="entry-screen">
     <h1>Welcome Back, Ashen One.</h1> 
     <button onclick="document.getElementById('entry-screen').classList.add('hidden')">strat</button>
@@ -142,44 +131,6 @@
       The first flame quickly fades. Darkness will shortly settle… But one day, tiny flames will dance across the darkness, like embers…
     </p>
   </div>
-
-  <script>
-    const canvas = document.getElementById('firelight');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    let particles = [];
-    document.addEventListener('mousemove', e => {
-      for (let i = 0; i < 2; i++) {
-        particles.push({
-          x: e.clientX,
-          y: e.clientY,
-          alpha: 1,
-          radius: Math.random() * 2 + 1,
-          dx: (Math.random() - 0.5) * 2,
-          dy: (Math.random() - 1.5) * 2,
-          color: `rgba(255, ${100 + Math.random() * 155}, 0,`
-        });
-      }
-    });
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p, i) => {
-        p.x += p.dx;
-        p.y += p.dy;
-        p.alpha -= 0.01;
-        if (p.alpha <= 0) particles.splice(i, 1);
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = p.color + p.alpha + ")";
-        ctx.fill();
-      });
-      requestAnimationFrame(animate);
-    }
-    animate();
-  </script>
 </body>
 </html>
 
