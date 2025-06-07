@@ -8,8 +8,7 @@
     body {
       margin: 0;
       background-color: #0b0b0b;
-      background-image: url('https://www.transparenttextures.com/patterns/dark-denim.png');
-      color: #e2decf;
+            color: #e2decf;
       font-family: 'Noto Serif TC', serif;
       line-height: 1.8;
     }
@@ -60,8 +59,61 @@
       color: #e8c278;
     }
   </style>
+  
+  <style>
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('https://i.imgur.com/oWqYFgo.png'); /* 斷裂紋 */
+      opacity: 0.03;
+      z-index: -1;
+    }
+    #entry-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: #0b0b0b;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 999;
+      transition: opacity 1.5s ease;
+    }
+    #entry-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    #entry-screen h1 {
+      font-family: 'IM Fell English SC', serif;
+      color: #e8c278;
+      font-size: 3em;
+      margin-bottom: 20px;
+    }
+    #entry-screen button {
+      background: none;
+      border: 1px solid #a48a5f;
+      color: #e6ddc7;
+      padding: 12px 24px;
+      font-size: 1.1em;
+      font-family: 'Noto Serif TC', serif;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    #entry-screen button:hover {
+      background: rgba(164, 138, 95, 0.2);
+    }
+  </style>
 </head>
 <body>
+  <div id="entry-screen">
+    <h1>
+    Welcome back, Ashen One.</h1>
+    <button onclick="document.getElementById('entry-screen').classList.add('hidden')">strat</button>
+  </div>
+  
   <div class="container">
     <img src="IMG_1054.jpg" alt="個人照片" class="portrait">
     <h1>大家好！</h1>
@@ -89,8 +141,10 @@
     <p>對我來說，《黑魂》就是一款會讓人痛苦又成癮的作品，每當終於擊敗 boss，那種喜悅，是別的遊戲無法比擬的。</p>
     <hr style="margin: 50px 0; border: none; border-top: 1px solid #4a3b2a;">
     <p style="text-align: center; color: #7e6b4f; font-size: 0.95em; font-style: italic;">
-      灰燼大人｜即使火焰熄滅，靈魂仍將輪迴。
+      The first flame quickly fades. Darkness will shortly settle… But one day, tiny flames will dance across the darkness, like embers…
     </p>
   </div>
 </body>
 </html>
+
+
